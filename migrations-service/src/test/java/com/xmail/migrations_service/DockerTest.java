@@ -39,9 +39,4 @@ String currentDb = jdbcTemplate.queryForObject("SELECT current_database();", Str
     assertEquals(1,numberOfCustomer);
 }
 
-@Test
-    void test_checkCheckSumFlyWay(){
-
-}
-
 }
