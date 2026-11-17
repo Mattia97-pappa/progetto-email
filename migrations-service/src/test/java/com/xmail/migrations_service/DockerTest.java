@@ -36,8 +36,12 @@ String currentDb = jdbcTemplate.queryForObject("SELECT current_database();", Str
 @Test
     void test_isflyWayWorking(){
     int numberOfCustomer = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM customers where customer_surname = 'Pappacena'", Integer.class);
-    assertEquals(numberOfCustomer, 1);
+    assertEquals(1,numberOfCustomer);
 }
 
+@Test
+    void test_checkCheckSumFlyWay(){
+
+}
 
 }
