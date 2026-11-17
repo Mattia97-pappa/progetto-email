@@ -10,6 +10,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Testcontainers
 @SpringBootTest()
@@ -35,7 +36,7 @@ String currentDb = jdbcTemplate.queryForObject("SELECT current_database();", Str
 @Test
     void test_isflyWayWorking(){
     int numberOfCustomer = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM customers where customer_surname = 'Pappacena'", Integer.class);
-    assert(numberOfCustomer == 1);
+    assertEquals(numberOfCustomer, 1);
 }
 
 
