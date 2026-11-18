@@ -18,6 +18,7 @@
 
     <modules>
         <module>xmail-migrations</module>
+        <module>xmail-model</module>
     </modules>
 
     <properties>
