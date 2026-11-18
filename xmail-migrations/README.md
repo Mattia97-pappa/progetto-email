@@ -24,8 +24,5 @@ keeping the schema up to date and versioned. Once the migrations are done, the a
 
 Requirements: Docker running.
 
-```bash
-./mvnw spring-boot:run
-```
 
-Spring Boot starts the PostgreSQL container defined in `compose.yaml` and applies the migrations.
+Spring Boot starts the PostgreSQL container defined in `../compose.yaml` and applies the migrations.
