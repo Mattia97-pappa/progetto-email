@@ -17,7 +17,8 @@
     <name>xmail-parent</name>
 
     <modules>
-        <module>migrations-service</module>
+        <module>xmail-migrations</module>
+        <module>xmail-model</module>
     </modules>
 
     <properties>

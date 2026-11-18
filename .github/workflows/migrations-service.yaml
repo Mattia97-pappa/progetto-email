@@ -1,23 +1,13 @@
-name: migrations-service
+name: ci
 
 on:
   push:
     branches: [develop, main]
-    paths:
-      - 'migrations-service/**'
-      - '.github/workflows/migrations-service.yaml'
   pull_request:
-    paths:
-      - 'migrations-service/**'
-      - '.github/workflows/migrations-service.yaml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: migrations-service
 
     steps:
       - name: Checkout
