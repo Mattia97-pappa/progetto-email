@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xmail.customer_service.persistence.CustomerDao">
+
+    <resultMap id="customerResultMap" type="com.xmail.model.customer.CustomerInformation">
+        <id column="customer_id" property="customerId"/>
+        <result column="customer_name" property="customerName"/>
+        <result column="lastname" property="customerSurname"/>
+        <result column="customer_email" property="customerEmail"/>
+    </resultMap>
+
+    <select id="getAllCustomerWithoutFilter" resultMap="customerResultMap">
+        SELECT
+        c.customer_name,
+        c.customer_surname as lastname,
+        c.customer_email
+        FROM customers c
+    </select>
+
+</mapper>
