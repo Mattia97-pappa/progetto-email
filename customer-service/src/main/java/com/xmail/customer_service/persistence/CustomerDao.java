@@ -1,6 +1,7 @@
 package com.xmail.customer_service.persistence;
 
 import com.xmail.model.customer.CustomerInformation;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 

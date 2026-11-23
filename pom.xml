@@ -19,6 +19,7 @@
     <modules>
         <module>xmail-migrations</module>
         <module>xmail-model</module>
+        <module>customer-service</module>
     </modules>
 
     <properties>

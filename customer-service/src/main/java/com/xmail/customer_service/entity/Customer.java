@@ -17,10 +17,12 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "customerId")
     private Long id;
+
     private String customerName;
     private String  customerSurname;
-    private String email;
+    private String customerEmail;
     private UUID customerUuid;
 
 }
