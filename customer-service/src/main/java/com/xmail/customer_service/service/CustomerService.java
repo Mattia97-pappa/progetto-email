@@ -1,5 +1,6 @@
 package com.xmail.customer_service.service;
 
+import com.xmail.customer_service.dto.CustomerResponse;
 import com.xmail.customer_service.persistence.CustomerDao;
 import com.xmail.model.customer.CustomerInformation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,14 @@ public class CustomerService {
     @Autowired
     CustomerDao customerDao;
 
+    //taking customer list using mybatis
     public List<CustomerInformation> getAllCustomerWithoutFilter(){
         return customerDao.getAllCustomerWithoutFilter();
     }
+
+    public CustomerResponse getCustomer(){
+
+    }
+
 
 }

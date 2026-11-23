@@ -7,8 +7,8 @@ CREATE table advertising_typology (
 );
 
 INSERT INTO advertising_typology (typology_name, typology_description)
-VALUES ('electric cars','advertising promotions for electric cars'),
-       ('diesel car','advertising promotions for diesel cars');
+VALUES ('ELECTRICS-CAR','advertising promotions for electric cars'),
+       ('DIESEL-CAR','advertising promotions for diesel cars');
 
 
 CREATE TABLE advertising_campaign (
