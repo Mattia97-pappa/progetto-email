@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -29,6 +30,7 @@ public class CustomerControllerIntegrationTest {
 
 
     static final String CUSTOMER_UUID = "9f4c2a1b-7e3d-4b8a-9c12-6d5e8f0a3b2c";
+    static final String STARK_EXPECTED_JSON_PATH = "expected/customer-tony-stark.json";
 
     @Container
     @ServiceConnection
@@ -69,9 +71,15 @@ public class CustomerControllerIntegrationTest {
 
         String body = resultactions.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
-        CustomerResponseDto customerResponseDto = jsonMapper.readValue(body, CustomerResponseDto.class);
+        CustomerResponseDto actualCustomerResponseDto = jsonMapper.readValue(body, CustomerResponseDto.class);
 
-        assertEquals("Tony", customerResponseDto.customerName());
+        String expected = new ClassPathResource(STARK_EXPECTED_JSON_PATH)
+                .getContentAsString(StandardCharsets.UTF_8);
+
+        CustomerResponseDto expectedDtoCustomer = jsonMapper.readValue(expected, CustomerResponseDto.class);
+
+        assertEquals(expectedDtoCustomer, actualCustomerResponseDto);
+
 
     }
 
