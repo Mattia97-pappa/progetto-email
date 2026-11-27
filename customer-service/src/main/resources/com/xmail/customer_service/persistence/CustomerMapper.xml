@@ -9,12 +9,25 @@
         <result column="customer_email" property="customerEmail"/>
     </resultMap>
 
+    <sql id="Base_Column_List">
+        c.customer_id,
+        c.customer_uuid,
+        c.customer_name,
+        c.customer_surname AS lastname,
+        c.customer_email
+    </sql>
+
     <select id="getAllCustomerWithoutFilter" resultMap="customerResultMap">
         SELECT
-        c.customer_name,
-        c.customer_surname as lastname,
-        c.customer_email
+        <include refid="Base_Column_List"/>
         FROM customers c
+    </select>
+
+    <select id="getCustomerWithFIlter" resultMap="customerResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM customers c
+        WHERE c.customer_email is not null
     </select>
 
 </mapper>
