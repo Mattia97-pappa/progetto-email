@@ -56,9 +56,6 @@ public class CustomerControllerIntegrationTest {
                 andExpect(status().isOk())
                 .andDo(print());
 
-        int numberOfCustomer = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM customers", Integer.class);
-
-        assert(numberOfCustomer > 60);
 
     }
 

@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-
+		<sonar.coverage.exclusions>**/CustomerServiceApplication.java</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
