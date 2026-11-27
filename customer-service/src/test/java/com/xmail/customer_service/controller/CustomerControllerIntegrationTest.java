@@ -55,12 +55,17 @@ public class CustomerControllerIntegrationTest {
         mockMvc.perform(get("/customer/allCustomerWithoutFIlter")).
                 andExpect(status().isOk())
                 .andDo(print());
+
+        int numberOfCustomer = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM customers", Integer.class);
+
+        assert(numberOfCustomer > 60);
+
     }
 
 
     @Test
     @Transactional
-    void test_shouldReturTheNewCustomer() throws Exception {
+    void test_shouldReturnTheNewCustomer() throws Exception {
 
 
         jdbcTemplate.update("""
