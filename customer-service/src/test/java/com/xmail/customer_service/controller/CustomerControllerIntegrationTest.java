@@ -87,5 +87,13 @@ public class CustomerControllerIntegrationTest {
 
     }
 
+    @Test
+    void test_withNonExistentUuidshouldReturn404() throws Exception {
+
+        ResultActions resultactions = mockMvc.perform(get("/customer/" + CUSTOMER_UUID))
+                .andExpect(status().isNotFound());
+
+    }
+
 
 }
