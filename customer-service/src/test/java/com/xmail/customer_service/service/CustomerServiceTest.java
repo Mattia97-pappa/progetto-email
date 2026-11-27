@@ -2,6 +2,7 @@ package com.xmail.customer_service.service;
 
 import com.xmail.customer_service.dto.CustomerResponseDto;
 import com.xmail.customer_service.entity.Customer;
+import com.xmail.customer_service.exception.custom.CustomerNotFoundException;
 import com.xmail.customer_service.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
@@ -24,6 +25,8 @@ public class CustomerServiceTest {
 
     @InjectMocks
     CustomerService customerService;
+
+
 
 
     static final UUID CUSTOMER_UUID = UUID.fromString("9f4c2a1b-7e3d-4b8a-9c12-6d5e8f0a3b2c");
@@ -48,4 +51,15 @@ public class CustomerServiceTest {
 
     }
 
+    @Test
+    void test_theClientShouldNotBeFoundThrowingAnException(){
+
+        when(customerRepository.findByCustomerUuid(CUSTOMER_UUID)).thenReturn(Optional.empty());
+
+        CustomerNotFoundException thrown = assertThrows(CustomerNotFoundException.class,
+        ()-> customerService.getCustomerByUuid(CUSTOMER_UUID), "customer not found with uuid: 9f4c2a1b-7e3d-4b8a-9c12-6d5e8f0a3b2c");
+
+        assertTrue(thrown.getMessage().contains("9f4c2a1b-7e3d-4b8a-9c12-6d5e8f0a3b2c"));
+
+    }
 }
